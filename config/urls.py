@@ -16,10 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+admin.site.site_header = "Kironia Admin"
+admin.site.site_title = "Kironia Admin Portal"
+admin.site.index_title = "Welcome to Kironia Portal"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
-     path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
+    path('api/', include('posts.urls', namespace='posts'))
     # path('accounts/', include('allauth.urls')),
 ]
